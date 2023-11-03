@@ -1,11 +1,10 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from statsmodels.tsa.stattools import adfuller
 
 # ADF test 
 #csv file need to be in data folder
 test = input("Enter dataset name: ")
-
-
 data = pd.read_csv('./data/'+test)
 
 # Ignore NaN values 
@@ -21,11 +20,12 @@ print(f'p-value: {result[1]}')
 
 print('Critical Values:', result[4])
 
-if result[0] < result[4]['5%']:
-    print("Series is likely stationary")
-    # AKA mean reversion strategy could possibly work
-else: 
-    print("Series is likely non-stationary")
+
+# if result[0] < result[4]['5%']:
+#     print("Series is likely stationary")
+#     # AKA mean reversion strategy could possibly work
+# else: 
+#     print("Series is likely non-stationary")
 
 # USDCAD.csv is not stationary
 # Enter dataset name: USDCAD.csv
@@ -41,3 +41,4 @@ else:
 # p-value: 1.3479540617342404e-09
 # Critical Values: {'1%': -3.4311190188723706, '5%': -2.861879854023006, '10%': -2.566950899393073}
 # Series is likely stationary
+
