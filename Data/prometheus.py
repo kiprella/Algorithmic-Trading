@@ -1,10 +1,17 @@
 import yfinance as yf
 
+ticker = input('Enter ticker: ')
+# YEAR-MONTH-DAY
+date_x = input('Date(from): ')
+date_y = input('Date(to): ')
+
 
 def test_yfinance():
-    for symbol in ['AAPL']:
+    for symbol in [ticker]:
         print(">>", symbol, end=' ... ')
-        data = yf.download(symbol,start='2020-09-25', end='2020-10-02')
+        data = yf.download(symbol,start=date_x, end=date_y)
+        csv_filename = f"{symbol}_prices_{date_y}_to{date_x}.csv"
+        data.to_csv(csv_filename)
         print(data)
 
 
