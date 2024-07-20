@@ -1,23 +1,15 @@
 import yfinance as yf
+import csv
 
-ticker = ['X','Y','Z']
-# YEAR-MONTH-DAY
-# XXXX-XX-XX
-date_x = '2018-01-01'
-date_y = '2024-06-08'
+ticker = 'BTC-USD'
+start_date = '2015-01-01'
+end_date = '2024-07-18'
 
+data = yf.download(ticker, start=start_date, end=end_date)
 
-def test_yfinance():
-    for symbol in ticker:
-        # print(">>", symbol, end=' ... ')
-        data = yf.download(symbol,start=date_x, end=date_y)
-        csv_filename = f"{symbol}_data.csv"
-        data.to_csv(csv_filename)
-        print(data)
+data.to_csv(f"{ticker}_{start_date}_{end_date}.csv")
 
 
-if __name__ == "__main__":
-    test_yfinance()
 
 #                   Open        High         Low       Close   Adj Close     Volume
 # Date
